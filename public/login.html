@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Sistema Comercial</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="shortcut icon" href="img/NUEVO-LOGO-ZR-MEDIC---EDITABLE.png" type="image/x-icon">
+</head>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, Helvetica, sans-serif;
+       background: linear-gradient(
+    to right,
+    #18A5D8 0%,
+    #1AAED8 20%,
+    #1DB9D7 40%,
+    #20C6D3 60%,
+    #22D0CD 80%,
+    #25D3C8 100%
+);
+    }
+    .login-container{
+        width: 100%;
+        max-width: 400px;
+        padding: 20px;
+    }
+    .login-card{
+        background: white;
+        border-radius: 18px;
+        padding: 32px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, .18);
+        text-align: center;
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+    }
+    input{
+        outline: none;
+        border: none;
+        width: 100%;
+        padding: 13px;
+        margin-bottom: 12px;
+        border: 1px solid #d1d5db;
+        border-radius: 10px;
+        font-size: 15px;
+    }
+    button{
+        border: none;
+        width: 100%;
+        border-radius: 10px;
+        padding: 13px;
+       background: linear-gradient(135deg, #18A5D8, #25D3C8);
+        color: white;
+       font-weight: bold;
+       font-size: 15px;
+       cursor: pointer;
+    }
+    button:hover{
+          background: linear-gradient(135deg, #1598C8, #1FC4BC);
+    }
+     .login-card{
+  
+ text-align: center;
+ margin: auto;
+ 
+     }
+    .login-card img{
+     width: 320px;
+     width: 100%;
+     
+     object-position: center;
+    }
+    p{
+        margin: 8px 0 24px ;
+        color: #6b7280;
+    }
+    .error {
+  margin-top: 14px;
+  color: #dc2626;
+  font-size: 14px;
+}
+.login-card h1{
+    margin: 0;
+    color: #075e54;
+    font-size: 28px;
+}
+</style>
+<body>
+    <div class="login-container">
+        <div class="login-card"> 
+      <img src="img/Logo ZR MEDIC.png" alt="">
+       <p>Acceso a la Plataforma</p>
+         
+        <form id="loginForm">
+         <input type="text" id="usuario" placeholder="Usuario" required>
+ <div class="password-container">
+    <input type="password" id="password" placeholder="Contraseña" required>
+    <span class="toggle-password" onclick="mostrarPassword()">👁</span>
+</div>
+   <button type="submit">Ingresar</button>
+        </form>
+         <div id="errorLogin" class="error"></div>
+    </div>
+    </div>
+
+    <script>
+ const form = document.getElementById('loginForm');
+    const errorLogin = document.getElementById('errorLogin');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      errorLogin.textContent = '';
+
+      const usuario = document.getElementById('usuario').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      const res = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ usuario, password })
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || !data.ok) {
+        errorLogin.textContent = data.error || 'No se pudo iniciar sesión';
+        return;
+      }
+
+      window.location.href = '/';
+    });
+function mostrarPassword() {
+    const password = document.getElementById("password");
+
+    if (password.type === "password") {
+        password.type = "text";
+    } else {
+        password.type = "password";
+    }
+}
+    </script>
+
+</body>
+</html>
