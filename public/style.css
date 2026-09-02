@@ -6480,3 +6480,544 @@ body.panel-ajustes-abierto {
     }
 
 }
+.estado-chat-selector{
+  min-width: 205px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+/* TÍTULO */
+
+.estado-chat-label {
+  padding-left: 4px;
+
+  color: #94a3b8;
+
+  font-size: 9px;
+  font-weight: 900;
+
+  letter-spacing: .12em;
+}
+.estado-chat-control{
+position: relative;
+width: 100%;
+height: 46px;
+display: flex;
+align-items: center;
+overflow: hidden;
+background: #fff;
+border: 1px solid #d9e2e8;
+border-radius: 12px;
+box-shadow: 0 2px 6px rgba(15, 23, 42, 0.4);
+transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+.estado-chat-control:hover {
+  border-color: #8ed8ca;
+
+  box-shadow:
+    0 4px 12px rgba(15, 139, 120, .08);
+}
+
+/* ICONO IZQUIERDO */
+
+.estado-chat-icono {
+  position: absolute;
+
+  left: 14px;
+
+  z-index: 2;
+
+  color: #0b9386;
+
+  font-size: 13px;
+
+  pointer-events: none;
+}
+
+
+/* SELECT */
+
+.estado-chat-control #estado {
+  width: 100%;
+  height: 100%;
+
+  padding:
+    0 42px
+    0 39px !important;
+
+  border: 0 !important;
+  border-radius: 0 !important;
+
+  outline: none;
+
+  background: transparent !important;
+
+  color: #263b36;
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+
+/* FOCO */
+
+.estado-chat-control:focus-within {
+  border-color: #19aa96;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(25, 170, 150, .11);
+}
+
+
+/* FLECHA */
+
+.estado-chat-flecha {
+  position: absolute;
+
+  right: 15px;
+
+  color: #94a3b8;
+
+  font-size: 11px;
+
+  pointer-events: none;
+
+  transition:
+    transform .2s ease,
+    color .2s ease;
+}
+
+
+.estado-chat-control:focus-within
+.estado-chat-flecha {
+  color: #0b9386;
+
+  transform: rotate(180deg);
+}
+
+
+/* OPCIONES */
+
+#estado option {
+  padding: 12px;
+
+  background: #ffffff;
+
+  color: #334155;
+
+  font-size: 13px;
+}
+
+
+/* DESACTIVADO */
+
+#estado:disabled {
+  cursor: not-allowed;
+
+  color: #94a3b8;
+}
+
+
+.estado-chat-control:has(#estado:disabled) {
+  background: #f8fafc;
+
+  opacity: .8;
+}
+
+/* ==========================================================
+   RESPONSIVE REAL - CABECERA CHAT ZR MEDIC
+   PEGAR AL FINAL DE style.css
+========================================================== */
+
+/* Permite que todo realmente pueda reducirse */
+#panelChat,
+.chat-header,
+.header-cliente,
+.header-cliente > div,
+.estado-chat-selector,
+.acciones-atencion {
+  min-width: 0 !important;
+}
+
+#panelChat {
+  overflow: hidden !important;
+}
+
+
+/* ==========================================================
+   ESCRITORIO NORMAL
+========================================================== */
+
+.header-cliente {
+  flex: 1 1 auto !important;
+  max-width: none !important;
+}
+
+.header-cliente > div:last-child {
+  min-width: 0 !important;
+}
+
+#clienteNombre {
+  max-width: 100%;
+}
+
+.estado-chat-selector {
+  flex: 0 0 205px;
+  width: 205px;
+}
+
+.acciones-atencion {
+  flex: 0 0 auto;
+}
+
+
+/* ==========================================================
+   PANTALLAS MEDIANAS
+   LAPTOP / VENTANA REDUCIDA
+========================================================== */
+
+@media (max-width: 1450px) {
+
+  .chat {
+    grid-template-rows:
+      auto
+      minmax(0, 1fr)
+      86px !important;
+  }
+
+  .chat-header {
+    display: grid !important;
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      auto !important;
+
+    grid-template-areas:
+      "cliente cliente"
+      "estado acciones";
+
+    align-items: center !important;
+
+    gap: 8px 12px !important;
+
+    min-height: 138px !important;
+    height: auto !important;
+
+    padding: 11px 15px !important;
+  }
+
+
+  /* CLIENTE */
+
+  .chat-header > .header-cliente {
+    grid-area: cliente;
+
+    width: 100% !important;
+
+    min-width: 0 !important;
+    max-width: none !important;
+
+    padding-left: 0 !important;
+  }
+
+
+  .avatar-grande {
+    width: 46px !important;
+    height: 46px !important;
+    flex: 0 0 46px !important;
+
+    font-size: 15px !important;
+  }
+
+
+  #clienteNombre {
+    width: 100%;
+
+    overflow: hidden;
+
+    font-size: 17px !important;
+
+    line-height: 1.15 !important;
+
+    white-space: nowrap !important;
+    text-overflow: ellipsis;
+  }
+
+
+  #clienteTelefono {
+    max-width: 100%;
+
+    overflow: hidden;
+
+    font-size: 12px !important;
+
+    white-space: nowrap !important;
+    text-overflow: ellipsis;
+  }
+
+
+  .modo-atencion {
+    max-width: 100%;
+
+    overflow: hidden;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+
+  /* ESTADO */
+
+  .estado-chat-selector {
+    grid-area: estado;
+
+    width: 185px !important;
+    min-width: 0 !important;
+  }
+
+
+  .estado-chat-control {
+    width: 100% !important;
+  }
+
+
+  /* BOTONES */
+
+  .acciones-atencion {
+    grid-area: acciones;
+
+    justify-self: end;
+
+    display: flex !important;
+    align-items: center;
+
+    gap: 7px !important;
+
+    min-width: 0 !important;
+  }
+
+
+  .acciones-atencion button {
+    min-height: 42px !important;
+
+    padding: 0 10px !important;
+
+    font-size: 11px !important;
+
+    white-space: nowrap;
+  }
+
+}
+
+
+/* ==========================================================
+   LAPTOP PEQUEÑA
+   COMO LA CAPTURA QUE ME ENVIASTE
+========================================================== */
+
+@media (max-width: 1180px) {
+
+  /* Reducimos la lista izquierda */
+
+  .app {
+    grid-template-columns:
+      64px
+      300px
+      minmax(0, 1fr) !important;
+  }
+
+
+  .menu-lateral {
+    width: 64px !important;
+  }
+
+
+  #panelChatsSidebar {
+    width: 300px !important;
+  }
+
+
+  /* Cabecera */
+
+  .chat-header {
+    grid-template-columns:
+      minmax(150px, 190px)
+      minmax(0, 1fr) !important;
+
+    grid-template-areas:
+      "cliente cliente"
+      "estado acciones";
+
+    padding:
+      10px 12px !important;
+  }
+
+
+  .estado-chat-selector {
+    width: 100% !important;
+    max-width: 190px;
+  }
+
+
+  .acciones-atencion {
+    width: 100%;
+
+    justify-content: flex-end;
+
+    flex-wrap: nowrap;
+  }
+
+
+  .acciones-atencion button {
+    min-width: 0;
+
+    padding:
+      0 9px !important;
+
+    font-size:
+      10.5px !important;
+  }
+
+}
+
+
+/* ==========================================================
+   TABLET / VENTANA MUY PEQUEÑA
+========================================================== */
+
+@media (max-width: 950px) {
+
+  .app {
+    grid-template-columns:
+      60px
+      275px
+      minmax(0, 1fr) !important;
+  }
+
+
+  .menu-lateral {
+    width: 60px !important;
+  }
+
+
+  #panelChatsSidebar {
+    width: 275px !important;
+  }
+
+
+  .chat-header {
+    grid-template-columns:
+      1fr !important;
+
+    grid-template-areas:
+      "cliente"
+      "estado"
+      "acciones";
+
+    gap: 7px !important;
+
+    min-height: 184px !important;
+  }
+
+
+  .estado-chat-selector {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+
+  .estado-chat-label {
+    font-size: 8px;
+  }
+
+
+  .acciones-atencion {
+    width: 100%;
+
+    justify-content: stretch !important;
+
+    gap: 6px !important;
+  }
+
+
+  .acciones-atencion button {
+    flex: 1 1 0;
+
+    min-width: 0;
+
+    padding:
+      0 6px !important;
+  }
+
+}
+
+
+/* ==========================================================
+   MUY ANGOSTO
+========================================================== */
+
+@media (max-width: 760px) {
+
+  .app {
+    grid-template-columns:
+      56px
+      minmax(0, 1fr) !important;
+  }
+
+
+  .menu-lateral {
+    grid-column: 1 !important;
+    grid-row: 1 / 3 !important;
+
+    width: 56px !important;
+  }
+
+
+  #panelChatsSidebar {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+
+    width: 100% !important;
+  }
+
+
+  #panelChat {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+
+    width: 100% !important;
+  }
+
+
+  .chat-header {
+    padding:
+      9px 10px !important;
+  }
+
+
+  .avatar-grande {
+    width: 40px !important;
+    height: 40px !important;
+
+    flex-basis: 40px !important;
+  }
+
+
+  #clienteNombre {
+    font-size: 15px !important;
+  }
+
+
+  .acciones-atencion button {
+    font-size: 10px !important;
+  }
+
+}

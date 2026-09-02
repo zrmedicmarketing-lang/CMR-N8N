@@ -902,14 +902,24 @@
           </div>
         </div>
 
-        <select id="estado" disabled>
-          <option>Nuevo</option>
-          <option>Atendido</option>
-          <option>Cotización enviada</option>
-          <option>Seguimiento</option>
-          <option>Venta cerrada</option>
-          <option>Descartado</option>
-        </select>
+        <div class="estado-chat-selector">
+          <span class="estado-chat-label">
+            ESTADO
+          </span>
+<div class="estado-chat-control">
+   <i class="fa-solid fa-circle-dot estado-chat-icono"></i>
+ <select id="estado" disabled aria-label="Estado comercial">
+ <option value="Nuevo">🆕 Nuevo</option>
+<option value="Atendido">🟢 Atendido</option>
+<option value="Cotización enviada">📄 Cotización enviada</option>
+<option value="Seguimiento">🕐 Seguimiento</option>
+
+<option value="Venta cerrada"> ✅ Venta cerrada</option>
+<option value="Descartado">⛔ Descartado</option>
+ </select>
+     <i class="fa-solid fa-chevron-down estado-chat-flecha"></i>
+</div>
+        </div>
 
       <div class="acciones-atencion">
 <button
@@ -1505,8 +1515,8 @@
     </button>
 
 </div>
-
-          <div class="caja-toolbar-acciones">
+        
+           <div class="caja-toolbar-acciones">
             <div class="caja-buscador">
               <i class="fa-solid fa-magnifying-glass"></i>
 
